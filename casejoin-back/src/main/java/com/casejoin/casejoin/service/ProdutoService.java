@@ -10,4 +10,5 @@ public interface ProdutoService {
     Page<ProdutoResponseRecord> listarTodos(Pageable pageable);
     ProdutoResponseRecord buscarPorId(Long id);
     void deletar(Long id);
+    void atualizar(Long id, ProdutoRequestRecord produtoRequest);
 }

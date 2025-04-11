@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #1976d2;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+  
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-right: 2rem;
+    }
+  
+    a {
+      margin-left: 1rem;
+      color: white;
+      text-decoration: none;
+  
+      &.active-link {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .main-content {
+    padding: 6rem 1rem 1rem 1rem;
+  }
+  

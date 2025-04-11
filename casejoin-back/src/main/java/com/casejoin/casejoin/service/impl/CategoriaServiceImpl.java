@@ -57,4 +57,15 @@ public class CategoriaServiceImpl implements CategoriaService {
         }
         categoriaRepository.deleteById(id);
     }
+
+    @Override
+    public void atualizar(Long id, CategoriaRequestRecord categoriaRequest) {
+        logger.info("Atualizando categoria com ID: {}", id);
+
+        Categoria categoria = categoriaRepository.findById(id)
+                .orElseThrow(() -> new CategoriaNaoEncontradaException(id));
+        categoria.setNome(categoriaRequest.nome());
+        categoriaRepository.save(categoria);
+    }
+
 }

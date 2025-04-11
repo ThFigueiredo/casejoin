@@ -15,4 +15,7 @@ public interface CategoriaService {
     CategoriaResponseRecord buscarPorId(Long id);
 
     void deletar(Long id);
+
+    void atualizar(Long id, CategoriaRequestRecord categoriaRequest);
+
 }

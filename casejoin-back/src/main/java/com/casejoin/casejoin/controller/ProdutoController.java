@@ -71,4 +71,17 @@ public class ProdutoController {
         produtoService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Atualiza um produto existente")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Produto atualizado com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Produto não encontrado")
+    })
+    public ResponseEntity<Void> atualizarProduto(
+            @PathVariable Long id,
+            @RequestBody ProdutoRequestRecord produtoRequest) {
+        produtoService.atualizar(id, produtoRequest);
+        return ResponseEntity.ok().build();
+    }
 }

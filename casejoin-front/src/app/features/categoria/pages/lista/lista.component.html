@@ -1,0 +1,34 @@
+<h2 class="mb-3">Lista de Categorias</h2>
+
+<div class="mb-3">
+  <button pButton label="Nova Categoria" icon="pi pi-plus" class="p-button-success" [routerLink]="['/categorias/cadastro']"></button>
+</div>
+
+<p-table 
+    [value]="categorias"
+    *ngIf="categorias.length > 0"
+    [paginator]="true"
+    [rows]="5"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    >
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nome</th>
+      <th style="width: 180px;">Ações</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-categoria>
+    <tr>
+      <td>{{ categoria.nome }}</td>
+      <td>
+        <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" (click)="editar(categoria.id)"></button>
+        <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deletar(categoria.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+  
+</p-table>
+
+<ng-template #vazio>
+  <p>Nenhuma categoria cadastrada.</p>
+</ng-template>

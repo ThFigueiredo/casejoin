@@ -1,0 +1,19 @@
+<h2 class="mb-3">Nova Categoria</h2>
+
+<form (ngSubmit)="salvar()" class="p-fluid p-formgrid p-grid">
+  <div class="p-field p-col-12 p-md-6">
+    <label for="nome">Nome da Categoria</label>
+    <input
+      id="nome"
+      type="text"
+      pInputText
+      [(ngModel)]="nome"
+      name="nome"
+      required
+    />
+  </div>
+
+  <div class="p-field p-col-12 p-md-6" style="display: flex; align-items: end;">
+    <button type="submit" pButton label="Salvar" icon="pi pi-save" class="p-button-primary"></button>
+  </div>
+</form>

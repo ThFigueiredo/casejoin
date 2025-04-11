@@ -66,4 +66,19 @@ public class CategoriaController {
         categoriaService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Atualiza uma categoria existente")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Categoria atualizada com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Categoria não encontrada")
+    })
+    public ResponseEntity<Void> atualizarCategoria(
+            @PathVariable Long id,
+            @RequestBody CategoriaRequestRecord categoriaRequest) {
+
+        categoriaService.atualizar(id, categoriaRequest);
+        return ResponseEntity.ok().build();
+    }
+
 }

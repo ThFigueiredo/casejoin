@@ -1,0 +1,36 @@
+<p-toast></p-toast>
+<form [formGroup]="formProduto" (ngSubmit)="salvar()" class="p-fluid p-formgrid p-grid">
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="nome">Nome</label>
+      <input id="nome" pInputText formControlName="nome" required />
+    </div>
+  
+    <div class="p-field p-col-12 p-md-6">
+      <label for="preco">Preço</label>
+      <input id="preco" type="number" pInputText formControlName="preco" required />
+    </div>
+  
+    <div class="p-field p-col-12 p-md-6">
+      <label for="categoriaId">Categoria</label>
+      <p-dropdown
+        inputId="categoriaId"
+        [options]="categorias"
+        formControlName="categoriaId"
+        optionLabel="nome"
+        optionValue="id"
+        placeholder="Selecione uma categoria">
+      </p-dropdown>
+    </div>
+  
+    <div class="p-col-12">
+      <p-button
+        type="submit"
+        label="{{ isEdicao ? 'Atualizar' : 'Salvar' }}"
+        icon="pi pi-check"
+        styleClass="p-button-primary"
+        [disabled]="formProduto.invalid">
+      </p-button>
+    </div>
+  </form>
+  

@@ -66,4 +66,22 @@ public class ProdutoServiceImpl implements ProdutoService {
         }
         produtoRepository.deleteById(id);
     }
+
+    @Override
+    public void atualizar(Long id, ProdutoRequestRecord produtoRequest) {
+        logger.info("Atualizando produto com ID: {}", id);
+
+        Produto produto = produtoRepository.findById(id)
+                .orElseThrow(() -> new ProdutoNaoEncontradoException(id));
+
+        Categoria categoria = categoriaRepository.findById(produtoRequest.categoriaId())
+                .orElseThrow(() -> new CategoriaNaoEncontradaException(produtoRequest.categoriaId()));
+
+        produto.setNome(produtoRequest.nome());
+        produto.setPreco(produtoRequest.preco());
+        produto.setCategoria(categoria);
+
+        produtoRepository.save(produto);
+        logger.info("Produto atualizado com sucesso: {}", produto.getId());
+    }
 }
